@@ -1,4 +1,4 @@
-* Collect-homework
+* 项目名：Collect-homework收邮件
 
 * 这次项目工作者：凡一志、刘炫、程乾杰
 * 目的：
