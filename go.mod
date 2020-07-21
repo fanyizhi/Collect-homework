@@ -1,8 +1,9 @@
-module github.com/fanyizhi/Collect-homework
+module github.com
 
 go 1.14
 
 require (
+	github.com/fanyizhi/Collect-homework v0.0.0-20200721084119-ff1d011ad959
 	github.com/go-echarts/go-echarts v1.0.0
 	github.com/mattn/go-sqlite3 v1.14.0
 	github.com/mxk/go-imap v0.0.0-20150429134902-531c36c3f12d
