@@ -7,7 +7,7 @@ import (
 	"log"
 	"mime/quotedprintable"
 	"strings"
-
+	"github.com/fanyizhi/Collect-homework"
 	"golang.org/x/text/encoding/simplifiedchinese"
 )
 

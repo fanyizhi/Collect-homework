@@ -1,6 +1,10 @@
 package mailfetcher
 
-import "time"
+import (
+	"time"
+	"github.com/fanyizhi/Collect-homework"
+)
+)
 
 //GetDateRange 获取默认合法作业时间范围
 func GetDateRange() (startDate time.Time, endDate time.Time) {
