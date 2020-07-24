@@ -1,4 +1,4 @@
-package mailfetcher
+package mailfecther
 
 import (
 	"bytes"
@@ -15,7 +15,7 @@ import (
 	"path"
 	"strings"
 	"time"
-    n
+
 	"github.com/mxk/go-imap/imap"
 )
 

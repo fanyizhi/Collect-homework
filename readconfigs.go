@@ -1,4 +1,4 @@
-package mailfetcher
+package mailfecther
 
 import (
 	"bufio"
