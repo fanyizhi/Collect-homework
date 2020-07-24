@@ -1,4 +1,4 @@
-package mailfecther
+package mailfetcher
 
 import (
 	"bytes"

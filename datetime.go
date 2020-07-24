@@ -2,8 +2,6 @@ package mailfetcher
 
 import (
 	"time"
-	"github.com/fanyizhi/Collect-homework"
-)
 )
 
 //GetDateRange 获取默认合法作业时间范围
