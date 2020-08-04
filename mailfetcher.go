@@ -8,7 +8,6 @@ import (
 	"strings"
 	"time"
 
-	mailfetcher "./mailfetcher"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -28,13 +27,13 @@ var usageTemplate = `usage:
 `
 
 func setConfigs() bool {
-	classOptions := mailfetcher.ReadConfigDir("./configsdir")
+	classOptions := ReadConfigDir("./configsdir")
 
-	dateBegin, dateEnd := mailfetcher.GetDateRange()
+	dateBegin, dateEnd := GetDateRange()
 	nIndexChoice := -1
 
 	if len(os.Args) == 3 && os.Args[1] == "-d" {
-		mailfetcher.MailFetchConfig.DateStart, mailfetcher.MailFetchConfig.DateEnd =
+		MailFetchConfig.DateStart, MailFetchConfig.DateEnd =
 			dateBegin, dateEnd
 		nIndexChoice, _ = strconv.Atoi(os.Args[2])
 		//检查范围
@@ -43,7 +42,7 @@ func setConfigs() bool {
 			return false
 		}
 		//选择设置
-		mailfetcher.MailFetchConfig = classOptions[nIndexChoice]
+		MailFetchConfig = classOptions[nIndexChoice]
 	} else if len(os.Args) == 5 && os.Args[1] == "-s" {
 		dateBegin, _ = time.ParseInLocation("200601021504", os.Args[2], time.Local)
 		dateEnd, _ = time.ParseInLocation("200601021504", os.Args[3], time.Local)
@@ -56,7 +55,7 @@ func setConfigs() bool {
 		}
 
 		//选择设置
-		mailfetcher.MailFetchConfig = classOptions[nIndexChoice]
+		MailFetchConfig = classOptions[nIndexChoice]
 	} else if len(os.Args) == 2 && os.Args[1] == "-l" {
 		for i, item := range classOptions {
 			fmt.Printf("%d: %s\r\n", i, item.ClassName())
@@ -82,7 +81,7 @@ func setConfigs() bool {
 			dateEnd, _ = time.ParseInLocation("200601021504", os.Args[3], time.Local)
 		}
 		//选择设置
-		mailfetcher.MailFetchConfig = classOptions[nIndexChoice]
+		MailFetchConfig = classOptions[nIndexChoice]
 	} else {
 		strUsage := strings.Replace(usageTemplate, "<py>", filepath.Base(os.Args[0]), -1)
 		fmt.Printf(strUsage, dateBegin.Format("200601021504"), dateEnd.Format("200601021504"),
@@ -92,13 +91,13 @@ func setConfigs() bool {
 
 	fmt.Println("设置信息获取完毕，开始下载邮件...")
 	//用户设置时间覆盖下载时间设置
-	mailfetcher.MailFetchConfig.DateStart, mailfetcher.MailFetchConfig.DateEnd =
+	MailFetchConfig.DateStart, MailFetchConfig.DateEnd =
 		dateBegin, dateEnd
 	return true
 }
 func main() {
 
 	if setConfigs() {
-		mailfetcher.Run()
+		Run()
 	}
 }
